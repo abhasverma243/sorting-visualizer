@@ -20,8 +20,17 @@ const start = async () => {
 };
 
 const RenderScreen = async () => {
-  let algoValue = Number(document.querySelector(".algo-menu").value);
-  await RenderList();
+ let sizeValue = 10;
+    await clearScreen();
+    let list = await randomList(sizeValue);
+    const arrayNode = document.querySelector(".array");
+    for (const element of list) {
+        const node = document.createElement("div");
+        node.className = "cell";
+        node.setAttribute("value", String(element));
+        node.style.height = `${3.8 * element}px`;
+        arrayNode.appendChild(node);
+    }
 };
 
 const RenderList = async () => {
